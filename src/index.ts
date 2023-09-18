@@ -121,6 +121,7 @@ const react = (_options?: Options): PluginOption[] => {
         if (!result) return;
 
         if (!refresh || !refreshContentRE.test(result.code)) {
+          console.log('refresh not enabled', _id, refresh, !refreshContentRE.test(result.code))
           return result;
         }
 
@@ -196,10 +197,13 @@ const transformWithOptions = async (
     ? { syntax: "typescript", tsx: false, decorators }
     : id.endsWith(".jsx")
     ? { syntax: "ecmascript", jsx: true }
+    : id.endsWith(".js")
+    ? { syntax: "ecmascript", jsx: true}
     : id.endsWith(".mdx")
     ? // JSX is required to trigger fast refresh transformations, even if MDX already transforms it
       { syntax: "ecmascript", jsx: true }
     : undefined;
+  console.log("checking file ", id, parser)
   if (!parser) return;
 
   let result: Output;
