@@ -203,7 +203,6 @@ const transformWithOptions = async (
     ? // JSX is required to trigger fast refresh transformations, even if MDX already transforms it
       { syntax: "ecmascript", jsx: true }
     : undefined;
-  console.log("checking file ", id, parser)
   if (!parser) return;
 
   let result: Output;

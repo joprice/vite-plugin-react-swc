@@ -599,7 +599,11 @@ export function validateRefreshBoundaryAndEnqueueUpdate(
     nextExports,
     (key, value) => {
       hasExports = true;
-      if (isLikelyComponentType(value)) return true;
+      if (isLikelyComponentType(value) || key == 'makeProps') return true;
+      console.log('exports', Object.keys(prevExports), key, 
+        prevExports[key], nextExports[key],
+        prevExports[key] === nextExports[key]
+    )
       return prevExports[key] === nextExports[key];
     },
   );
