@@ -121,7 +121,6 @@ const react = (_options?: Options): PluginOption[] => {
         if (!result) return;
 
         if (!refresh || !refreshContentRE.test(result.code)) {
-          console.log('refresh not enabled', _id, refresh, !refreshContentRE.test(result.code))
           return result;
         }
 
